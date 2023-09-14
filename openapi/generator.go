@@ -847,7 +847,7 @@ func (g *Generator) enumFromStructField(sf reflect.StructField, fname string, pa
 			sftype = sftype.Elem()
 		}
 		for _, val := range values {
-			if v, err := stringToType(val, sftype); err != nil {
+			if v, err := stringToType(strings.TrimSpace(val), sftype); err != nil {
 				g.error(&FieldError{
 					Message:  fmt.Sprintf("enum value %s cannot be converted to field type: %s", val, err),
 					Name:     fname,
